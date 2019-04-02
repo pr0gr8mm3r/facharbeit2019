@@ -1,0 +1,9 @@
+mat-card.suche-card {
+  padding: 0px;
+}
+
+mat-card {
+  max-width: 350px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
