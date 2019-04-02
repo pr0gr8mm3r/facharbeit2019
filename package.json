@@ -22,11 +22,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "npm run ng serve",
+    "build": "npm run ng build"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",

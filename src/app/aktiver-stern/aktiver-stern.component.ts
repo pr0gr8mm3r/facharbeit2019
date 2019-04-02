@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AktiverSternComponent implements OnInit {
 
-  stern: Observable<Stern>
+  //stern: Observable<Stern>
 
   constructor() { }
 
