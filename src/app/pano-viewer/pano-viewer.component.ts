@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { pannellum } from 'pannellum'
+//import { pannellum } from 'pannellum'
+declare var pannellum: any;
 
 @Component({
   selector: 'app-pano-viewer',
@@ -11,9 +12,11 @@ export class PanoViewerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    pannellum.viewer('app-pano-viewer', {
+    pannellum.viewer('pano', {
       "type": "equirectangular",
-      "panorama": "https://pannellum.org/images/alma.jpg"
+      "panorama": "../../assets/starmap.jpg",
+      "autoLoad": true,
+      "showControls": false
     });
   }
 

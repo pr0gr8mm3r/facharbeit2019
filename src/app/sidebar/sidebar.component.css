@@ -3,7 +3,5 @@ mat-card.suche-card {
 }
 
 mat-card {
-  max-width: 350px;
-  box-sizing: border-box;
   margin-bottom: 16px;
 }

@@ -12,10 +12,11 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { SucheComponent } from './suche/suche.component';
 import { AktiverSternComponent } from './aktiver-stern/aktiver-stern.component';
+import { PanoViewerComponent } from './pano-viewer/pano-viewer.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MaterialModule, FlexLayoutModule ],
-  declarations: [ AppComponent, SidebarComponent, SucheComponent, AktiverSternComponent ],
+  declarations: [ AppComponent, SidebarComponent, SucheComponent, AktiverSternComponent, PanoViewerComponent ],
   bootstrap:    [ AppComponent ],
   providers:    [ SterneService ]
 })
