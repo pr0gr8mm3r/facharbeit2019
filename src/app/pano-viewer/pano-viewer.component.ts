@@ -12,22 +12,16 @@ export class PanoViewerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    /*pannellum.viewer('pano', {
-      "type": "equirectangular",
-      "panorama": "../../assets/starmap.jpg",
-      "autoLoad": true,
-      "showControls": false
-    });*/
     pannellum.viewer('pano', {
       "type": "multires",
       "multiRes": {
           "basePath": "../../assets/panorama",
-          "path": "/%l/%s%x_%y",
+          "path": "/%l/%s%y_%x",
           "fallbackPath": "/fallback/%s",
-          "extension": "png",
-          "tileResolution": 1024,
-          "maxLevel": 0,
-          "cubeResolution": 1024
+          "extension": "jpg",
+          "tileResolution": 512,
+          "maxLevel": 5,
+          "cubeResolution": 5208
       },
       "autoLoad": true,
       "showControls": false
