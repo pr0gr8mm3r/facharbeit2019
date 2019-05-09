@@ -89,3 +89,59 @@
 .pnlm-grabbing {
     cursor: grabbing;
 }
+
+
+/*TODO: Remove later*/
+.pnlm-hotspot-base {
+    position: absolute;
+    visibility: hidden;
+    cursor: default;
+    vertical-align: middle;
+    top: 0;
+    z-index: 1;
+}
+.pnlm-hotspot {
+    height: 26px;
+    width: 26px;
+    border-radius: 13px;
+}
+.pnlm-hotspot:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+.pnlm-hotspot.pnlm-info {
+    background-position: 0 -104px;
+}
+.pnlm-hotspot.pnlm-scene {
+    background-position: 0 -130px;
+}
+
+div.pnlm-tooltip span {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    text-align: center;
+    max-width: 200px;
+    padding: 5px 10px;
+    margin-left: -220px;
+    cursor: default;
+}
+div.pnlm-tooltip:hover span{
+    visibility: visible;
+}
+div.pnlm-tooltip:hover span:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.7) transparent transparent transparent;
+    bottom: -20px;
+    left: -10px;
+    margin: 0 50%;
+}
+.pnlm-pointer {
+    cursor: pointer;
+}
