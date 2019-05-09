@@ -15,7 +15,7 @@ export class PanoViewerComponent implements OnInit {
     pannellum.viewer('pano', {
       "type": "multires",
       "multiRes": {
-          "basePath": "../../assets/panorama",
+          "basePath": "../../assets/panorama/basemap",
           "path": "/%l/%s%y_%x",
           "fallbackPath": "/fallback/%s",
           "extension": "jpg",
