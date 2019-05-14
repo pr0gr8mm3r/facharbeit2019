@@ -1,8 +1,16 @@
-<mat-card-header>
-	<button mat-icon-button mat-card-avatar>
-    <mat-icon color="accent">close</mat-icon>
-  </button>
+<ng-container *ngIf="sterneService.aktiverStern">
+  <mat-card>
+    <mat-card-header>
+      <button mat-icon-button mat-card-avatar (click)="clearAktiverStern()">
+        <mat-icon color="accent">close</mat-icon>
+      </button>
 
-  <mat-card-title>{{aktiverStern.name}}</mat-card-title>
-  <mat-card-subtitle>B1-25</mat-card-subtitle>
-</mat-card-header>
+      <mat-card-title>{{sterneService.aktiverStern.name}}</mat-card-title>
+      <mat-card-subtitle>
+        RektH: {{sterneService.aktiverStern.rektas}}
+        |
+        DeklDeg: {{sterneService.aktiverStern.dekl}}
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</ng-container>

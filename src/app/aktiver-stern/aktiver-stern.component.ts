@@ -9,15 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class AktiverSternComponent implements OnInit {
 
-  aktiverStern: Observable<Stern>
-
-  constructor(private sterneService: SterneService) {
-
-  }
+  constructor(public sterneService: SterneService) {}
 
   ngOnInit() {
-    this.aktiverStern = this.sterneService.aktiverStern
+  }
 
+  clearAktiverStern() {
+    //TODO
   }
 
 }

@@ -1,20 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Stern } from '../models/stern'
-import { Observable, of, Subscriber } from 'rxjs';
+import { Observable, of, Subscriber, pipe } from 'rxjs';
 
 @Injectable()
 export class SterneService {
-
-  aktiverStern: Observable<Stern>
-  aktiverSternSubscriber
-
-  constructor() {
-    this.aktiverStern = new Observable((subscriber)=>{
-      this.aktiverSternSubscriber = subscriber
-      console.log(subscriber)
-    })
-  }
+  
+  public aktiverStern: Stern = null
 
   getSterne(): Stern[] {
     let sterne: Stern[] = [
@@ -24,10 +16,8 @@ export class SterneService {
     return sterne
   }
 
- setAktiverStern(stern: Stern) {
-
-    this.aktiverSternSubscriber.next(stern)
-
+  setAktiverStern(stern: Stern) {
+    this.aktiverStern = stern
   }
 
 }
