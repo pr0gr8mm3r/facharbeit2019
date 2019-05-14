@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UIStateService } from '../providers/uistate.service';
 //import { pannellum } from 'pannellum'
 declare var pannellum: any;
 
@@ -9,7 +10,7 @@ declare var pannellum: any;
 })
 export class PanoViewerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private uiState: UIStateService) { }
 
   ngOnInit() {
     pannellum.viewer('pano', {
@@ -29,19 +30,10 @@ export class PanoViewerComponent implements OnInit {
             "tileResolution": 512,
             "maxLevel": 5,
             "cubeResolution": 5208
-          },
-          "hotSpots": [
-            {
-              "pitch": 0,
-              "yaw": 0,
-              "type": "scene",
-              "text": "Sternenkartemap",
-              "sceneId": "sternenkartemap"
-            }
-          ]
+          }
         },
 
-        "sternenkartemap": {
+        "sternenbildermap": {
           "title": "Sternenbilderkarte",
           "type": "multires",
           "multiRes": {
@@ -59,6 +51,13 @@ export class PanoViewerComponent implements OnInit {
       "autoLoad": true,
       "showControls": false
     });
+
+    this.uiState.getCurrentMap().subscribe(currentMap => {
+      console.log(currentMap)
+      //pannellum.loadScene(currentMap, pannellum.getPitch(), pannellum.getYaw(), pannellum.getHfov())
+      pannellum.loadScene(currentMap, 0, 0, 100)
+    })
+    this.uiState.toggleMaps()
   }
 
 }

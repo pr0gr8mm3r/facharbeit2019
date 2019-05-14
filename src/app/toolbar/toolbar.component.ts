@@ -4,20 +4,23 @@ import { SterneService } from '../providers/sterne.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { UIStateService } from '../providers/uistate.service';
 
 @Component({
-  selector: 'app-suche',
-  templateUrl: './suche.component.html',
-  styleUrls: ['./suche.component.css']
+  selector: 'app-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.css']
 })
-export class SucheComponent implements OnInit {
+export class ToolbarComponent implements OnInit {
 
   sterneCtrl = new FormControl();
 
   sterne: Stern[]
   gefilterteSterne: Observable<Stern[]>
 
-  constructor(private sterneService: SterneService) {
+  currentMap: Observable<string>
+
+  constructor(private sterneService: SterneService, private uiState: UIStateService) {
     this.gefilterteSterne = this.sterneCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -30,6 +33,8 @@ export class SucheComponent implements OnInit {
       new Stern("Alpha Centauri"),
       new Stern("Sirius")
     ]
+
+    this.currentMap = this.uiState.getCurrentMap()
   }
 
   private _filterSterne(value: string): Stern[] {
