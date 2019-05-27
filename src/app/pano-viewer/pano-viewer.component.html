@@ -1,1 +1,3 @@
-<div id="pano"></div>
+<div *ngIf="uiState.map == basemap" id="basemap" class="pano"></div>
+<p>{{uiState.map}}</p>
+<div *ngIf="uiState.map == sternenbildermap" id="sternenbildermap" class="pano"></div>

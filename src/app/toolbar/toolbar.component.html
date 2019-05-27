@@ -12,8 +12,8 @@
   </mat-form-field>
 </form>
 <div class="actions">
-  <button mat-icon-button>
-    <mat-icon *ngIf="currentMap == sternenbildermap" svgIcon="sternenbilderkarte"></mat-icon>
-    <mat-icon *ngIf="currentMap == basemap" svgIcon="basemap"></mat-icon>
+  <button mat-icon-button (click)="uiState.toggleMaps()">
+    <mat-icon *ngIf="uiState.map == sternenbildermap" svgIcon="sternenbilderkarte"></mat-icon>
+    <mat-icon *ngIf="uiState.map == basemap" svgIcon="basemap"></mat-icon>
   </button>
 </div>

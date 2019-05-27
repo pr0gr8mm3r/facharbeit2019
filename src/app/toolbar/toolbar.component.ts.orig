@@ -29,6 +29,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentMap = this.uiState.getCurrentMap()
     this.sterne = this.sterneService.getSterne()
   }
 
