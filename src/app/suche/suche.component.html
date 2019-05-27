@@ -1,0 +1,13 @@
+<form class="suchformular">
+	<mat-form-field mat-raised appearance="fill">
+		<mat-label>Nach Sternen suchen...</mat-label>
+		<input matInput [matAutocomplete]="auto" [formControl]="sterneCtrl"/>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option fxLayout="row" fxLayoutAlign="space-between center" *ngFor="let stern of gefilterteSterne | async" [value]="stern.name">
+        <span>{{stern.name}}</span> | 
+        <small>RektH: {{stern.rektas}}</small> | 
+        <small>DeklDeg: {{stern.dekl}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
