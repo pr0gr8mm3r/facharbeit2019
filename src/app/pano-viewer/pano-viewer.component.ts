@@ -13,7 +13,7 @@ export class PanoViewerComponent implements OnInit {
   constructor(public uiState: UIStateService) { }
 
   ngOnInit() {
-    /*pannellum.viewer('basemap', {
+    var viewer = pannellum.viewer('pano', {
       "default": {
         "firstScene": "basemap"
       },
@@ -32,8 +32,7 @@ export class PanoViewerComponent implements OnInit {
             "cubeResolution": 5208
           }
         },
-
-        "sternenbildermap": {
+        "sternenkartenmap": {
           "title": "Sternenbilderkarte",
           "type": "multires",
           "multiRes": {
@@ -51,8 +50,11 @@ export class PanoViewerComponent implements OnInit {
       "autoLoad": true,
       "showControls": false
     });
-    */
-    this.uiState.toggleMaps()
+
+    this.uiState.map.subscribe((currentMap) => {
+      console.log(currentMap)
+      viewer.loadScene(currentMap, viewer.getPitch(), viewer.getYaw(), viewer.getHfov())
+    })
   }
 
 }

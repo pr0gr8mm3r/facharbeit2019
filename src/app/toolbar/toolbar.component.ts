@@ -3,7 +3,7 @@ import { Stern } from '../models/stern';
 import { SterneService } from '../providers/sterne.service';
 import { UIStateService } from '../providers/uistate.service';
 import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
@@ -17,8 +17,6 @@ export class ToolbarComponent implements OnInit {
 
   sterne: Stern[]
   gefilterteSterne: Observable<Stern[]>
-
-  currentMap: Observable<string>
 
   constructor(private sterneService: SterneService, public uiState: UIStateService) {
     this.gefilterteSterne = this.sterneCtrl.valueChanges

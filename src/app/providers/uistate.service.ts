@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UIStateService {
 
-  public map: string = "basemap"
+  public map: BehaviorSubject<string> = new BehaviorSubject("basemap")
 
   toggleMaps() {
-    switch (this.map) {
+    console.log("toggeling map")
+    switch (this.map.getValue()) {
       case "basemap":
-        this.map = "sternenkartenmap"
+        this.map.next("sternenkartenmap")
         break
       default:
-        this.map = "basemap"
+        this.map.next("basemap")
     }
   }
 }
