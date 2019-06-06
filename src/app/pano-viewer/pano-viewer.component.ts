@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UIStateService } from '../providers/uistate.service';
+import { SterneService } from '../providers/sterne.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 declare var pannellum: any;
 
@@ -10,7 +12,7 @@ declare var pannellum: any;
 })
 export class PanoViewerComponent implements OnInit {
 
-  constructor(public uiState: UIStateService) { }
+  constructor(public uiState: UIStateService, private sterneService: SterneService) { }
 
   ngOnInit() {
     var viewer = pannellum.viewer('pano', {
@@ -50,6 +52,19 @@ export class PanoViewerComponent implements OnInit {
       "autoLoad": true,
       "showControls": false
     });
+
+    this.sterneService.aktiverStern.subscribe((data) => {
+      const id = "aktiverStern"
+      viewer.removeHotSpot(id)
+      if (data != null) {
+        viewer.addHotSpot({
+          "id": id,
+          "pitch": data.dekl,
+          //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
+          "yaw": 0
+        })
+      }
+    })
 
     this.uiState.map.subscribe((currentMap) => {
       console.log(currentMap)

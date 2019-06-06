@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Stern } from '../models/stern'
-import { Observable, of, Subscriber, pipe } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SterneService {
   
-  public aktiverStern: Stern = null
+  public aktiverStern: BehaviorSubject<Stern> = new BehaviorSubject(null)
 
   getSterne(): Stern[] {
     let sterne: Stern[] = [
@@ -17,7 +17,7 @@ export class SterneService {
   }
 
   setAktiverStern(stern: Stern) {
-    this.aktiverStern = stern
+    this.aktiverStern.next(stern)
   }
 
 }

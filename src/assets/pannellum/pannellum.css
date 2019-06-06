@@ -91,7 +91,6 @@
 }
 
 
-/*TODO: Remove later*/
 .pnlm-hotspot-base {
     position: absolute;
     visibility: hidden;
@@ -101,12 +100,10 @@
     z-index: 1;
 }
 .pnlm-hotspot {
-    height: 26px;
-    width: 26px;
-    border-radius: 13px;
-}
-.pnlm-hotspot:hover {
-    background-color: rgba(255,255,255,0.2);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px #ffab40 dashed;
 }
 .pnlm-hotspot.pnlm-info {
     background-position: 0 -104px;
