@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UIStateService } from '../providers/uistate.service';
 import { SterneService } from '../providers/sterne.service';
-import { identifierModuleUrl } from '@angular/compiler';
+import { Stern } from '../models/stern';
 
 declare var pannellum: any;
 
@@ -12,10 +12,14 @@ declare var pannellum: any;
 })
 export class PanoViewerComponent implements OnInit {
 
+  viewer = null
+
+  aktiverSternHotspotId = "aktiverStern"
+
   constructor(public uiState: UIStateService, private sterneService: SterneService) { }
 
   ngOnInit() {
-    var viewer = pannellum.viewer('pano', {
+    this.viewer = pannellum.viewer('pano', {
       "default": {
         "firstScene": "basemap"
       },
@@ -54,22 +58,26 @@ export class PanoViewerComponent implements OnInit {
     });
 
     this.sterneService.aktiverStern.subscribe((data) => {
-      const id = "aktiverStern"
-      viewer.removeHotSpot(id)
-      if (data != null) {
-        viewer.addHotSpot({
-          "id": id,
-          "pitch": data.dekl,
-          //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
-          "yaw": 0
-        })
-      }
+      this._updateAktiverStern(data)
     })
 
     this.uiState.map.subscribe((currentMap) => {
       console.log(currentMap)
-      viewer.loadScene(currentMap, viewer.getPitch(), viewer.getYaw(), viewer.getHfov())
+      this.viewer.loadScene(currentMap, this.viewer.getPitch(), this.viewer.getYaw(), this.viewer.getHfov())
+      this._updateAktiverStern(this.sterneService.aktiverStern.getValue())
     })
+  }
+
+  _updateAktiverStern(aktiverStern: Stern) {
+    this.viewer.removeHotSpot(this.aktiverSternHotspotId)
+    if (aktiverStern != null) {
+      this.viewer.addHotSpot({
+        "id": this.aktiverSternHotspotId,
+        "pitch": aktiverStern.dekl,
+        //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
+        "yaw": 0
+      })
+    }
   }
 
 }
