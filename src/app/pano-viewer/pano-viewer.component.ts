@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UIStateService } from '../providers/uistate.service';
 import { SterneService } from '../providers/sterne.service';
 import { Stern } from '../models/stern';
+import { HoursToDeg } from '../pipes/hoursToDeg.pipe';
 
 declare var pannellum: any;
 
@@ -16,7 +17,7 @@ export class PanoViewerComponent implements OnInit {
 
   aktiverSternHotspotId = "aktiverStern"
 
-  constructor(public uiState: UIStateService, private sterneService: SterneService) { }
+  constructor(public uiState: UIStateService, private sterneService: SterneService, private hToDegPipe: HoursToDeg) { }
 
   ngOnInit() {
     this.viewer = pannellum.viewer('pano', {
@@ -64,20 +65,30 @@ export class PanoViewerComponent implements OnInit {
     this.uiState.map.subscribe((currentMap) => {
       console.log(currentMap)
       this.viewer.loadScene(currentMap, this.viewer.getPitch(), this.viewer.getYaw(), this.viewer.getHfov())
-      this._updateAktiverStern(this.sterneService.aktiverStern.getValue())
+      this._updateAktiverStern(this.sterneService.aktiverStern.getValue(), false)
     })
   }
 
-  _updateAktiverStern(aktiverStern: Stern) {
+  _updateAktiverStern(aktiverStern: Stern, focus: Boolean = true) {
+
     this.viewer.removeHotSpot(this.aktiverSternHotspotId)
+
     if (aktiverStern != null) {
+
+      const pitch = aktiverStern.dekl
+      //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
+      const yaw = this.hToDegPipe.transform(aktiverStern.rektas)
+      console.log(yaw)
+
+      if(focus) this.viewer.lookAt(pitch, yaw)
       this.viewer.addHotSpot({
         "id": this.aktiverSternHotspotId,
-        "pitch": aktiverStern.dekl,
-        //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
-        "yaw": 0
+        "pitch": pitch,
+        "yaw": yaw
       })
+
     }
+
   }
 
 }

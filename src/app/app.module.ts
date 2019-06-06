@@ -16,11 +16,12 @@ import { SidebarComponent } from './sidebar/sidebar.component'
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AktiverSternComponent } from './aktiver-stern/aktiver-stern.component';
 import { PanoViewerComponent } from './pano-viewer/pano-viewer.component';
+import { HoursToDeg } from './pipes/hoursToDeg.pipe';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, HttpClientModule, MaterialModule, FlexLayoutModule ],
-  declarations: [ AppComponent, SidebarComponent, ToolbarComponent, AktiverSternComponent, PanoViewerComponent ],
+  declarations: [ AppComponent, SidebarComponent, ToolbarComponent, AktiverSternComponent, PanoViewerComponent, HoursToDeg ],
   bootstrap:    [ AppComponent ],
-  providers:    [ SterneService, UIStateService, MatIconRegistry ]
+  providers:    [ SterneService, UIStateService, MatIconRegistry, HoursToDeg ]
 })
 export class AppModule { }
