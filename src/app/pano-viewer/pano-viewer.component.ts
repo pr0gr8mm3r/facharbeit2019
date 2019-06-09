@@ -38,6 +38,8 @@ export class PanoViewerComponent implements OnInit {
             "maxLevel": 5,
             "cubeResolution": 5208
           }
+          /*"type": "equirectangular",
+          "panorama": "../../assets/panorama/debug/debug-pano.jpg"*/
         },
         "sternenkartenmap": {
           "title": "Sternenbilderkarte",
@@ -76,9 +78,7 @@ export class PanoViewerComponent implements OnInit {
     if (aktiverStern != null) {
 
       const pitch = aktiverStern.dekl
-      //TODO: Tatsächlicher Yaw, rektaszension in h in grad umwandeln
-      const yaw = this.hToDegPipe.transform(aktiverStern.rektas)
-      console.log(yaw)
+      const yaw = - this.hToDegPipe.transform(aktiverStern.rektas)
 
       if(focus) this.viewer.lookAt(pitch, yaw)
       this.viewer.addHotSpot({

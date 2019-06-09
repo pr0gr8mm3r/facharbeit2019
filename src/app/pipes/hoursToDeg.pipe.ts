@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core'
 
 @Pipe({
-  name: 'htodeg',
-  pure: false
+  name: 'htodeg'
 })
 export class HoursToDeg implements PipeTransform {
   transform(hours: number): number {
