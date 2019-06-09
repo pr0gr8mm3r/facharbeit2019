@@ -3,14 +3,89 @@
 
 <head>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/pannellum/pannellum.css"/>
-  <script type="text/javascript" src="./assets/pannellum/libpannellum.js"></script>
-  <script type="text/javascript" src="./assets/pannellum/pannellum.js"></script>
+	<link rel="stylesheet" href="./assets/pannellum/pannellum.css" />
+	<script type="text/javascript" src="./assets/pannellum/libpannellum.js"></script>
+	<script type="text/javascript" src="./assets/pannellum/pannellum.js"></script>
 	<title>Facharbeit 2019</title>
+	<style>
+		body {
+			background: #212121;
+		}
+
+		h1, h2 {
+			color: white;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 200;
+		}
+
+		h2 {
+			font-weight: 400;
+			font-size: 0.9em;
+			color: rgba(255, 255, 255, 0.7 )
+		}
+
+		.center {
+			top: 50%;
+			text-align: center;
+			transform: translateY(-50%);
+			position: absolute;
+			width: 100%;
+		}
+
+
+		.circular {
+			animation: rotate 2s linear infinite;
+			margin-top: 20px;
+			height: 50px;
+			width: 50px; 
+			}
+
+
+			.path {
+			stroke-dasharray: 1,200;
+			stroke-dashoffset: 0;
+			animation: 
+			dash 1.5s ease-in-out infinite,
+			color 6s ease-in-out infinite
+			;
+			stroke-linecap: round;
+			stroke: #3f88f8;
+			}
+
+			@keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+			}
+			@keyframes dash {
+			0% {
+				stroke-dasharray: 1,200;
+				stroke-dashoffset: 0;
+			}
+			50% {
+				stroke-dasharray: 89,200;
+				stroke-dashoffset: -35;
+			}
+			100% {
+				stroke-dasharray: 89,200;
+				stroke-dashoffset: -124;
+			}
+			}
+	</style>
 </head>
 
 <body>
-	<app>Lädt...</app>
+	<app>
+		<div id="splash-screen">
+			<div class="center">
+				<h1>Sternenkarte</h1>
+				<h2>Astronomie Facharbeit 2019</h2>
+				<svg class="circular" height="50" width="50">
+					<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+				</svg>
+			</div>
+		</div>
+	</app>
 </body>
 
 </html>
