@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 
 import { Stern } from '../models/stern'
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SterneService {
-  
-  public aktiverStern: BehaviorSubject<Stern> = new BehaviorSubject(null)
+  aktiverStern: BehaviorSubject<Stern>
 
-  getSterne(): Stern[] {
-    let sterne: Stern[] = [
-      new Stern("Polaris", 2.530194444, 89.26416667),
-      new Stern("Alpha Centauri", 14.65997222, -60.83527778),
-      new Stern("Sirius", 6.752472222, -16.71611111)
-    ]
-    return sterne
+  constructor(private http: HttpClient) {
+    this.aktiverStern = new BehaviorSubject(null)
+  }
+
+  getSterne(): Observable<Stern[]> {
+     
+     return this.http.get<Stern[]>("assets/sterne.json")
+   
   }
 
   setAktiverStern(stern: Stern) {

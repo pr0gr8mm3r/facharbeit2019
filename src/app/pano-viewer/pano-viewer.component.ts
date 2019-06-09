@@ -77,8 +77,8 @@ export class PanoViewerComponent implements OnInit {
 
     if (aktiverStern != null) {
 
-      const pitch = aktiverStern.dekl
-      const yaw = - this.hToDegPipe.transform(aktiverStern.rektas)
+      const pitch = aktiverStern.DEd
+      const yaw = - this.hToDegPipe.transform(aktiverStern.RAh)
 
       if(focus) this.viewer.lookAt(pitch, yaw)
       this.viewer.addHotSpot({
