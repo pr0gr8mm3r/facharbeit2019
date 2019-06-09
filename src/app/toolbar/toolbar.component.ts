@@ -64,7 +64,6 @@ export class ToolbarComponent implements OnInit {
 
       }
     }
-
     return this.sterne.filter(stern => stern.Name.toLowerCase().indexOf(filterValue) === 0);
   }
 
