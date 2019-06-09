@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
 
   aktiverSternQuery: Observable<String> = new Observable(null)
 
-  constructor(private sterneService: SterneService) {
+  constructor(private sterneService: SterneService, public uiState: UIStateService) {
     this.gefilterteSterne = this.sterneCtrl.valueChanges
       .pipe(
         startWith(''),

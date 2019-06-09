@@ -4,9 +4,9 @@
     <input matInput [matAutocomplete]="auto" [formControl]="sterneCtrl" />
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option fxLayout="row" fxLayoutAlign="space-between center" *ngFor="let stern of gefilterteSterne | async"
-        [value]="stern.name">
-        <span>{{stern.name}}</span> |
-        <small>{{stern.name}}</small>
+        [value]="stern.Name">
+        <span>{{stern.Name}}</span> |
+        <small>{{stern.Name}}</small>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
