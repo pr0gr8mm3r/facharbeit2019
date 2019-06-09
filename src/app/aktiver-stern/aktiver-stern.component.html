@@ -1,15 +1,15 @@
-<ng-container *ngIf="sterneService.aktiverStern">
+<ng-container *ngIf="aktiverStern">
   <mat-card>
     <mat-card-header>
       <button mat-icon-button mat-card-avatar (click)="clearAktiverStern()">
         <mat-icon color="accent">close</mat-icon>
       </button>
 
-      <mat-card-title>{{sterneService.aktiverStern.name}}</mat-card-title>
+      <mat-card-title>{{aktiverStern.name}}</mat-card-title>
       <mat-card-subtitle>
-        RektH: {{sterneService.aktiverStern.rektas}}
+        RektH: {{aktiverStern.rektas}}
         |
-        DeklDeg: {{sterneService.aktiverStern.dekl}}
+        DeklDeg: {{aktiverStern.dekl}}
       </mat-card-subtitle>
     </mat-card-header>
   </mat-card>

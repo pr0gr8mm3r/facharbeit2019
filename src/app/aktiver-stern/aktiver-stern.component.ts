@@ -9,9 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class AktiverSternComponent implements OnInit {
 
+  public aktiverStern: Stern
+
   constructor(public sterneService: SterneService) {}
 
   ngOnInit() {
+    this.sterneService.aktiverStern.subscribe((data) => {
+      this.aktiverStern = data
+    })
   }
 
   clearAktiverStern() {

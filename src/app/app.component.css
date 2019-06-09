@@ -1,3 +1,16 @@
+app-pano-viewer {
+    position: absolute;
+}
+
+app-sidebar {
+    padding: 16px;
+    z-index: 50;
+    position: absolute;
+    max-width: 350px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 p {
   font-family: Lato;
 }

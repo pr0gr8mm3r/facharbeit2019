@@ -1,0 +1,144 @@
+.pnlm-container {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    cursor: default;
+    width: 100%;
+    height: 100%;
+    background: #212121;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+    line-height: 1.4;
+    contain: content;
+    touch-action: none;
+}
+
+.pnlm-about-msg {
+    display: none;
+}
+
+.pnlm-container * {
+    box-sizing: content-box;
+}
+
+.pnlm-info-box {
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 350px;
+    transform: translate(-50%, -50%);
+    background-color: #424242;
+    border-radius: 3px;
+    display: table;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    table-layout: fixed;
+}
+
+.pnlm-info-box a {
+    color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.pnlm-info-box p {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 16px;
+}
+
+.pnlm-error-msg {
+    display: none;
+}
+
+.pnlm-dragfix, .pnlm-preview-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.pnlm-render-container {
+    cursor: inherit;
+    
+    /* Fix display bug in Safari 7 */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.pnlm-ui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.pnlm-grab {
+    cursor: grab;
+}
+
+.pnlm-grabbing {
+    cursor: grabbing;
+}
+
+
+.pnlm-hotspot-base {
+    position: absolute;
+    visibility: hidden;
+    cursor: default;
+    vertical-align: middle;
+    top: 0;
+    z-index: 1;
+}
+.pnlm-hotspot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px #ffab40 dashed;
+}
+.pnlm-hotspot.pnlm-info {
+    background-position: 0 -104px;
+}
+.pnlm-hotspot.pnlm-scene {
+    background-position: 0 -130px;
+}
+
+div.pnlm-tooltip span {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    text-align: center;
+    max-width: 200px;
+    padding: 5px 10px;
+    margin-left: -220px;
+    cursor: default;
+}
+div.pnlm-tooltip:hover span{
+    visibility: visible;
+}
+div.pnlm-tooltip:hover span:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.7) transparent transparent transparent;
+    bottom: -20px;
+    left: -10px;
+    margin: 0 50%;
+}
+.pnlm-pointer {
+    cursor: pointer;
+}
