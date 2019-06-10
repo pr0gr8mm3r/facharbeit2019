@@ -18,16 +18,17 @@ export class ToolbarComponent implements OnInit {
   sterne: Stern[]
   gefilterteSterne: Observable<Stern[]>
 
-  aktiverSternQuery: Observable<String> = new Observable(null)
-
   constructor(private sterneService: SterneService, public uiState: UIStateService) {
     this.gefilterteSterne = this.sterneCtrl.valueChanges
       .pipe(
         startWith(''),
         map(state => {
           if (this.sterne) {
-            if (state != this._filterSterne(state)) {
+            var filteredSterne = this._filterSterne(state)
+            if (state != filteredSterne) {
               return this.sterne.slice()
+            } else {
+              return filteredSterne
             }
           }
         })
@@ -39,32 +40,27 @@ export class ToolbarComponent implements OnInit {
       this.sterne = data
       console.log(data)
     });
-    this.aktiverSternQuery.subscribe((value) => {
-      for (var i = 0; i < this.sterne.length; i++) {
-        if (value == this.sterne[i].Name) {
-          this.sterneService.setAktiverStern(this.sterne[i])
-
-        }
-      }
-
-    })
-
-    this.sterneService.getSterne().subscribe((data) => {
-      this.sterne = data
-    })
   }
 
   private _filterSterne(value: string): Stern[] {
 
     const filterValue = value.toLowerCase();
 
-    for (var i = 0; i < this.sterne.length; i++) {
-      if (value == this.sterne[i].Name) {
-        this.sterneService.setAktiverStern(this.sterne[i])
+    console.log(value.length)
 
+    if (value.length > 2) {
+      console.log("searching...")
+      for (var i = 0; i < this.sterne.length; i++) {
+        if (value == this.sterne[i].Name) {
+          this.sterneService.setAktiverStern(this.sterne[i])
+
+        }
       }
+      return this.sterne.filter(stern => stern.Name.toLowerCase().indexOf(filterValue) === 0)
+    } else {
+      console.log("too little input to search")
+      return []
     }
-    return this.sterne.filter(stern => stern.Name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   setValue(name: String) {

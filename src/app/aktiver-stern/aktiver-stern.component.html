@@ -5,12 +5,16 @@
         <mat-icon color="accent">close</mat-icon>
       </button>
 
-      <mat-card-title>{{aktiverStern.name}}</mat-card-title>
+      <mat-card-title>{{aktiverStern.Name}}</mat-card-title>
       <mat-card-subtitle>
-        RektH: {{aktiverStern.rektas}}
-        |
-        DeklDeg: {{aktiverStern.dekl}}
+        {{aktiverStern.bfID}}
       </mat-card-subtitle>
     </mat-card-header>
+    <mat-card-content>
+      <p>
+        Rektaszension: {{aktiverStern.RAh}}h ({{aktiverStern.RAh | htodeg}}°)<br/>
+        Deklination: {{aktiverStern.DEd}}°
+      </p>
+    </mat-card-content>
   </mat-card>
 </ng-container>
