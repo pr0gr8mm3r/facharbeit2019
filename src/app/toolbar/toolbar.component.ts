@@ -24,11 +24,10 @@ export class ToolbarComponent implements OnInit {
         startWith(''),
         map(state => {
           if (this.sterne) {
-            var filteredSterne = this._filterSterne(state)
-            if (state != filteredSterne) {
-              return this.sterne.slice()
+            if (state) {
+              return this._filterSterne(state)
             } else {
-              return filteredSterne
+              return null
             }
           }
         })
@@ -48,8 +47,7 @@ export class ToolbarComponent implements OnInit {
 
     console.log(value.length)
 
-    if (value.length > 2) {
-      console.log("searching...")
+    if (value.length > 0) {
       for (var i = 0; i < this.sterne.length; i++) {
         if (value == this.sterne[i].Name) {
           this.sterneService.setAktiverStern(this.sterne[i])
@@ -58,7 +56,6 @@ export class ToolbarComponent implements OnInit {
       }
       return this.sterne.filter(stern => stern.Name.toLowerCase().indexOf(filterValue) === 0)
     } else {
-      console.log("too little input to search")
       return []
     }
   }

@@ -2,7 +2,7 @@
   <mat-form-field mat-raised appearance="fill">
     <mat-label>Nach Sternen suchen...</mat-label>
     <input matInput [matAutocomplete]="auto" [formControl]="sterneCtrl" />
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option fxLayout="row" fxLayoutAlign="space-between center" *ngFor="let stern of gefilterteSterne | async"
         [value]="stern.Name">
         <span>{{stern.Name}}</span> |
