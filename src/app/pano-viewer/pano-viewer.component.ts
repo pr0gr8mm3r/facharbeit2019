@@ -27,7 +27,6 @@ export class PanoViewerComponent implements OnInit {
 
       "scenes": {
         "basemap": {
-          "title": "Basemap",
           "type": "multires",
           "multiRes": {
             "basePath": "../../assets/panorama/basemap",
@@ -42,7 +41,6 @@ export class PanoViewerComponent implements OnInit {
           "panorama": "../../assets/panorama/debug/debug-pano.jpg"*/
         },
         "sternenkartenmap": {
-          "title": "Sternenbilderkarte",
           "type": "multires",
           "multiRes": {
             "basePath": "../../assets/panorama/sternenbildermap",
