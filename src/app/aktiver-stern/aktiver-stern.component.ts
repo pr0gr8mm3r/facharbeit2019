@@ -21,7 +21,7 @@ export class AktiverSternComponent implements OnInit {
   }
 
   clearAktiverStern() {
-    //TODO
+    this.sterneService.aktiverStern.next(null)
   }
 
 }
