@@ -11,13 +11,16 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
+
       <p>
         Rektaszension: {{aktiverStern.RAh}}h ({{aktiverStern.RAh | htodeg}}°)<br/>
         Deklination: {{aktiverStern.DEd}}°
       </p>
       <p>
-        <!--TODO: Vmag, ... hinzufügen-->
+        Scheinbare Helligkeit: {{aktiverStern.Vmag}}mag
+        MK Spektralklasse: {{aktiverStern.Sp}}
       </p>
+
     </mat-card-content>
   </mat-card>
 </ng-container>

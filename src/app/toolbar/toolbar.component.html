@@ -5,8 +5,13 @@
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option fxLayout="row" fxLayoutAlign="space-between center" *ngFor="let stern of gefilterteSterne | async"
         [value]="stern.Name">
-        <span>{{stern.Name}}</span> |
-        <small>{{stern.Name}}</small>
+        <ng-template [ngIf]="stern.Name" [ngIfElse]="onlyBfID">
+          <span>{{stern.Name}}</span> |
+          <small>{{stern.bfID}}</small>
+        </ng-template>
+        <ng-template #onlyBfID>
+            <span>{{stern.bfID}}</span>
+        </ng-template>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
